@@ -1,0 +1,77 @@
+﻿@model Cadastro.WebApp.Models.Login;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Login.styles.css" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .input {
+            border: 1px solid #ccc;
+            display: block;
+            padding: 0.4rem;
+            width: 250px;
+            border-radius: 4px;
+            margin: 0.2rem 0
+        }
+
+        .btn-login {
+            margin: 0.3rem;
+            padding: 10px 120px;
+            border-radius: 10px;
+            border: none;
+            background-color: #056033;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+                background-color: #4CAF50;
+            }
+
+        .label-text {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; height: 80vh">
+    <form asp-controller="Access" asp-action="Login" method="post" class="form-style">
+        <h1 style="text-align: center">Login</h1>
+        <div style="margin: 0.3rem" class="form-group">
+            <label asp-for="Email" class="control-label" style="label-text"></label>
+            <input type="email" placeholder="Email" asp-for="Email" class="input" />
+        </div>
+        <div style="margin: 0.3rem" class="form-group">
+            <label asp-for="PassWord" class="control-label" style="label-text">Senha</label>
+            <input type="password" placeholder="PassWord" asp-for="PassWord" class="input" />
+        </div>
+        <div class="form-group">
+        <label>
+            <input type="checkbox" asp-for="KeepLoggedIn" />
+            Lembrar
+        </label>
+        </div>
+        <button class="btn-login" type="submit">Login</button>
+        @if (ViewData["ValidateMessage"] != null)
+        {
+            <br />
+            <br />
+            <label>@ViewData["ValidateMessage"]</label>
+        }
+
+    </form>
+</body>
+</html>

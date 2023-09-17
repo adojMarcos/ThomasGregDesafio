@@ -1,0 +1,43 @@
+﻿@model Cadastro.WebApp.Models.Logradouro
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Logradouro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: none">
+                <label asp-for="IdGuid" class="control-label"></label>
+                <input asp-for="IdGuid" class="form-control" />
+                <span asp-validation-for="IdGuid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogradouroNome" class="control-label"></label>
+                <input asp-for="LogradouroNome" class="form-control" />
+                <span asp-validation-for="LogradouroNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdClient" class="control-label">Cliente</label>
+                @Html.DropDownListFor(model => model.IdClient, new SelectList(Model.Clientes, "IdGuid", "Nome"), "- Selecione -", new {style="width:355px; display: block"})
+                <span asp-validation-for="IdClient" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-1">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

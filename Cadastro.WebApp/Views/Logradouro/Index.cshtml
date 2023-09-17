@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Cadastro.WebApp.Models.Logradouro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Logradouro</h1>
+
+<p>
+    @Html.ActionLink("Novo Logradouro", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGuid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGuid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogradouroNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteName)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.IdGuid  }) |
+                    @Html.ActionLink("Detalhes", "Details", new {  id=item.IdGuid}) |
+                    @Html.ActionLink("Apagar", "Delete", new { id=item.IdGuid  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
