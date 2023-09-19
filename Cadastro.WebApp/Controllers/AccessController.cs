@@ -1,5 +1,4 @@
-﻿using Cadastro.Application.Command;
-using Cadastro.WebApp.Models;
+﻿using Cadastro.WebApp.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -36,13 +35,13 @@ namespace Cadastro.WebApp.Controllers
                 {
 
 
-                    AuthCommand command = new AuthCommand
-                    {
-                        Password = modelLogin.PassWord,
-                        Email = modelLogin.Email,
-                    };
+                    //AuthCommand command = new AuthCommand
+                    //{
+                    //    Password = modelLogin.PassWord,
+                    //    Email = modelLogin.Email,
+                    //};
 
-                    var user = await _mediator.Send(command);
+                    //var user = await _mediator.Send(command);
 
                     if (modelLogin.Email == "admin@admin.com" && modelLogin.PassWord == "admin")
                     {
