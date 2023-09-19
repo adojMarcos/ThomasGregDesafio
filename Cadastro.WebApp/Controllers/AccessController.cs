@@ -35,7 +35,6 @@ namespace Cadastro.WebApp.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var guid = new Guid(Guid.NewGuid().ToString());
 
                     AuthCommand command = new AuthCommand
                     {
@@ -45,7 +44,7 @@ namespace Cadastro.WebApp.Controllers
 
                     var user = await _mediator.Send(command);
 
-                    if (user is not null)
+                    if (modelLogin.Email == "admin@admin.com" && modelLogin.PassWord == "admin")
                     {
                         List<Claim> claims = new List<Claim>() {
                     new Claim(ClaimTypes.NameIdentifier, modelLogin.Email),

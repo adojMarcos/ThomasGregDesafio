@@ -3,10 +3,12 @@ using Cadastro.Application.Queries.ClienteQuery;
 using Cadastro.Application.Queries.LogradouroQuery;
 using Cadastro.WebApp.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cadastro.WebApp.Controllers
 {
+    [Authorize]
     public class LogradouroController : Controller
     {
         private readonly IMediator _mediator;
